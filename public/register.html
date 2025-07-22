@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form, #otp-section, #new-password-section {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input {
+      padding: 12px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      transition: border-color 0.2s;
+    }
+
+    input:focus {
+      border-color: #f78ca0;
+      outline: none;
+      background-color: #fff;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 16px;
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .nav-links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: #f78ca0;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    #otp-section,
+    #new-password-section {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Register With OTP</h2>
+
+    <!-- Step 1: Email input -->
+    <form id="otp-form">
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <button type="submit">Send OTP</button>
+    </form>
+
+    <!-- Step 2: OTP input -->
+    <div id="otp-section">
+      <input type="text" id="otp" placeholder="Enter OTP" required />
+      <button type="button" id="verify-btn">Verify OTP</button>
+    </div>
+
+    <!-- Step 3: Set password -->
+    <div id="new-password-section">
+      <input type="password" id="new-password" placeholder="Enter New Password" required />
+      <button type="button" id="set-password-btn">Set Password</button>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <a href="login.html">Login</a>
+      <a href="forget.html">Forgot Password?</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

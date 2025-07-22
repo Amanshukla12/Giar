@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>International Journals</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        @media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .category {
+        font-size: 15px;
+        padding: 12px 15px;
+        min-width: 90%;
+    }
+
+    .flip-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    #journalImage {
+        max-height: 200px;
+    }
+
+    #publishBtn, #applyBtn {
+        width: 100%;
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    input[type="text"], select, input[type="file"] {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .research-card {
+        font-size: 14px;
+    }
+
+    .research-card a {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .category {
+        font-size: 14px;
+    }
+
+    .flip-btn {
+        font-size: 15px;
+    }
+
+    #publishBtn, #applyBtn {
+        font-size: 14px;
+    }
+
+    .research-card h4 {
+        font-size: 16px;
+    }
+}
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .editor-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: middle;
+            object-fit: cover;
+        }
+        ul li {
+            margin-bottom: 15px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .flip-container {
+            margin-bottom: 20px;
+        }
+        .flip-btn {
+            padding: 12px 28px;
+            font-size: 18px;
+            border: none;
+            background-color: #ff7f50;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .flip-btn:hover {
+            background-color: #ff5722;
+            transform: scale(1.05);
+        }
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            animation: fadeIn 1s ease forwards;
+        }
+        .category {
+            background: #f0f0f0;
+            padding: 15px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            font-size: 16px;
+            text-align: center;
+            min-width: 250px;
+        }
+        .category:hover {
+            background: #74ebd5;
+            color: #fff;
+            transform: scale(1.05);
+        }
+        .details {
+            margin-top: 40px;
+        }
+        #publishBtn, #applyBtn {
+            margin-top: 15px;
+            padding: 10px 30px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: none;
+        }
+        #publishBtn:hover, #applyBtn:hover {
+            background: #45a049;
+        }
+        #journalImage {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            max-height: 300px;
+            object-fit: cover;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .research-card {
+  background: #fff;
+  border-left: 5px solid #4CAF50;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: left;
+}
+.research-card h4 {
+  margin: 0 0 10px;
+}
+.research-card a {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: #2196F3;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 5px;
+}
+.research-card a:hover {
+  background-color: #0d8ae0;
+}
+
+    </style>
+
+    <div class="container">
+        <h1>International Journals</h1>
+
+        <div class="flip-container">
+            <button id="flipButton" class="flip-btn">Show Journals</button>
+        </div>
+
+        <div class="categories" id="categories" style="display: none;"></div>
+
+        <div id="details">
+            <h2 id="journalTitle"></h2>
+            <p id="journalDescription"></p>
+            <img id="journalImage" alt="" />
+            <br>
+            <button id="publishBtn">Publish</button>
+            <button id="applyBtn">Apply</button>
+        </div>
+    </div>
+<!-- Admin Publish Form (Visible only to admin) -->
+<div id="adminPublishForm" style="display: none; margin-top: 30px; text-align: left;">
+  <h3>Publish Research Paper</h3>
+  <form id="researchForm" enctype="multipart/form-data">
+    <label for="paperTitle">Paper Title:</label><br>
+    <input type="text" id="paperTitle" name="title" required style="width: 100%; padding: 8px;"><br><br>
+
+    <label for="categorySelect">Select Journal:</label><br>
+    <select id="categorySelect" name="category" required style="width: 100%; padding: 8px;">
+      <option value="">-- Select Journal --</option>
+    </select><br><br>
+
+    <label for="paperFile">Attach PDF:</label><br>
+    <input type="file" id="paperFile" name="file" accept=".pdf" required><br><br>
+
+    <button type="submit" style="padding: 10px 25px; background-color: #28a745; color: white; border: none; border-radius: 6px;">Publish Now</button>
+  </form>
+  <p id="uploadStatus" style="color: green; margin-top: 10px;"></p>
+</div>
+
+    <div style="margin-top: 40px; text-align: left;">
+        <h3>Downloads</h3>
+     <!-- 📄 Research Dashboard Section -->
+      <!-- GIAR Journal Description (Only for Biological Science) -->
+<div id="bioJournalDetails" style="display: none; margin-top: 30px;">
+  <div class="container" style="background-color: #eef9f2; border-left: 6px solid #4CAF50; padding: 20px;">
+    <h2 style="text-align: center;">GIAR - International Journal of Biological Sciences</h2>
+    <p>
+      The GIAR-International Journal of Biological Sciences is regulated by a leading multidisciplinary scientific publication for Scientists, Students, and Professionals to publish Scientific Papers, Manuscripts, etc.
+      <br><br>
+      Subjects include: <strong>Biotechnology</strong>, <strong>Medical Biology</strong>, <strong>Plant Biology</strong>, <strong>Bioinformatics</strong>, <strong>Pharmacology</strong>, and many more.
+      <br><br>
+      Monthly research is published under the GoldSmith Institute of Advanced Research (GIAR). The first five publications are free. Afterward, authors need a membership or must pay a fee.
+    </p>
+    <p>
+      🕒 Publication takes around 2 months post-editing & review. Editing guidelines will be shared with authors.
+    </p>
+
+    <h3 style="color: #2e7d32;">📋 Editorial Board</h3>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.05);">
+        <img src="arli.jpg" alt="Dr. Arli" class="editor-img">
+        <div>
+          <strong>Dr. Arli Aditya Parikesit</strong> – Editor-in-Chief (Indonesia)<br>
+          i3L Indonesia | Bioinformatics<br>
+          <a href="mailto:johnkecops@yahoo.co.uk">johnkecops@yahoo.co.uk</a>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.05);">
+        <img src="rajan.jpg" alt="Dr. Rajan" class="editor-img">
+        <div>
+          <strong>Dr. Rajan Sharma</strong> – Executive Editor (India)<br>
+          GNDU Amritsar | Biotechnology<br>
+          <a href="mailto:sharmarajans21@gmail.com">sharmarajans21@gmail.com</a>
+
+        </div>
+      </div>
+
+       <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.05);">
+        <img src="bhavin.jpg" alt="Dr. Rajan" class="editor-img">
+        <div>
+        <strong>Dr. Bhavin Kumar (India)</strong> – Associate Editors<br>
+          Madhav University, Rajasthan, India | Biotechnology<br>
+          <a href="dr.bhavinsoni1505@gmail.com">dr.bhavinsoni1505@gmail.com</a>
+          
+        </div>
+      </div>
+       <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.05);">
+        <img src="pranav.jpg" alt="Dr. Rajan" class="editor-img">
+        <div>
+          <strong>Dr. Pranav Prabhakar (India)</strong> – Professor (Deputy Director Research)<br>
+          Parul University, Gujarat, India | Biotechnology<br>
+          <a href=" Prabhakar.iitm@gmail.com"> Prabhakar.iitm@gmail.com </a>
+          
+        </div>
+      </div>
+        <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.05);">
+        <img src="neerajgupta.jpg" alt="Dr. Rajan" class="editor-img">
+        <div>
+          <strong>Dr. Niraj Gupta (India)</strong> – Assistant Professor<br>
+           College for Pharmacy, Agara, Uttar Pradesh, India| Pharmacy<br>
+          <a href="nirajg261@gmail.com">nirajg261@gmail.com</a>
+          
+        </div>
+      </div>
+      </div>
+        <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.05);">
+        <img src="utsav.jpg" alt="Dr. Rajan" class="editor-img">
+        <div>
+          <strong>Dr. Utsav Nepal (Nepal)</strong> – Quality Control Manager<br>
+           Kantipur Pharmaceuticals Lab Ltd., Nepal | Pharmacy<br>
+          <a href="nep_utsav@yahoo.com">nep_utsav@yahoo.com</a>
+          
+        </div>
+      </div>
+       <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.05);">
+        <img src="poonamsingh.jpg" alt="Dr. Rajan" class="editor-img">
+        <div>
+          <strong>Dr. Poonam Singh (India)</strong>– Assistant Professor<br>
+           Amity University, Noida, Uttar Pradesh, India | Biotechnology<br>
+          <a href="pssingh1@amity.edu">pssingh1@amity.edu</a>
+          
+        </div>
+      </div>
+      <!-- Add more editors here in the same format -->
+    </div>
+
+    <h3 style="color: #2e7d32; margin-top: 20px;">🔍 Reviewers</h3>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.05);">
+        <img src="mr.jpg" alt="Ms. Sanjana" class="editor-img">
+        <div>
+          <strong>Ms. Sanjana Gupta</strong><br>
+          CEO, GIAR | Specialization: Biotechnology
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; background: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.05);">
+        <img src="reviewer2.jpg" alt="Ms. Mansi" class="editor-img">
+        <div>
+          <strong>Ms. Mansi Gupta</strong><br>
+          GIAR Corporate Ambassador | Specialization: Biotechnology
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dashboardSection" style="display: none; margin-top: 50px;">
+  <div class="container" style="background-color: #f9f9f9;">
+    <h2 style="text-align: center;">📚 Research Papers in This Journal</h2>
+    <div id="researchList" style="margin-top: 30px;"></div>
+  </div>
+</div>
+
+
+        <ul>
+            <li><a href="gudlinesform.pdf" target="_blank">Download Guidelines PDF</a></li>
+            <li><a href="GIAR_Copyright_Transfer_Form.pdf" target="_blank">Download Sample Paper PDF</a></li>
+        </ul>
+    </div>
+
+    <script src="publication.js"></script>
+</body>
+</html>  

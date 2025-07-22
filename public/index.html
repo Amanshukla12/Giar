@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      padding-top: 90px;
+    }
+
+    .navigation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: linear-gradient(90deg, #4b1e1e, #5e2c0d);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      position: relative;
+    }
+
+    .right a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      transition: transform 0.3s, color 0.3s;
+      position: relative;
+    }
+
+    .right a:hover {
+      color: #ffea00;
+      transform: scale(1.1);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 130%;
+      left: 0;
+      background-color: white;
+      border-radius: 10px;
+      min-width: 180px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 12px 16px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .login-btn {
+      padding: 8px 16px;
+      background-color: rgb(61, 80, 226);
+      color: #007bff;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+    }
+
+    .login-btn:hover {
+      background-color: #ffea00;
+      color: #000;
+      transform: scale(1.1);
+    }
+
+    .user-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 0 5px rgba(255,255,255,0.5);
+    }
+
+    .user-popup {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      color: black;
+      border-radius: 10px;
+      padding: 10px 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 999;
+      width: 250px;
+    }
+
+    .user-popup p {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .user-popup button {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .user-popup button:hover {
+      background-color: #c82333;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .right {
+        position: absolute;
+        top: 80px;
+        right: 30px;
+        flex-direction: column;
+        background: #4b1e1e;
+        padding: 20px;
+        border-radius: 10px;
+        gap: 15px;
+        display: none;
+      }
+
+      .right.show {
+        display: flex;
+      }
+
+      .dropdown-content {
+        position: static;
+      }
+    }
+
+    /* Login Required Popup */
+    #loginRequiredPopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      z-index: 10000;
+      text-align: center;
+    }
+
+    #loginRequiredPopup a {
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="left">
+    <img src="logo.jpg" alt="Logo" class="logo">
+  </div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="right" id="menu">
+    <a href="abouth.html" data-protected="true">About</a>
+
+    <div class="dropdown">
+      <a href="#" onclick="toggleOptions()">Membership</a>
+      <div id="membershipOptions" class="dropdown-content">
+        <a href="Individual.html" data-protected="true">Individual</a>
+        <a href="corporate.html" data-protected="true">Corporate</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="#" data-protected="true">Research ▾</a>
+      <div class="dropdown-content">
+        <a href="confrence.html" data-protected="true">Conference</a>
+        <a href="project.html" data-protected="true">Project</a>
+        <a href="publication.html" data-protected="true">Publication</a>
+        <a href="award.html" data-protected="true">Award</a>
+        <a href="#" data-protected="true">Internship</a>
+        <a href="fellowship.html" data-protected="true">Fellowship</a>
+      </div>
+    </div>
+
+    <div class="dropdown" style="position: relative;">
+      <a href="#" onclick="toggleNoticePopup(event)" data-protected="true">Notice</a>
+      <div id="noticePopup" class="user-popup">
+        <p><strong>Notice:</strong></p>
+        <p id="noticeText">Loading...</p>
+        <textarea id="noticeInput" style="display: none; width: 100%; height: 60px; margin-top: 10px;"></textarea>
+        <button id="saveNoticeBtn" style="display: none;" onclick="saveNotice()">Save</button>
+      </div>
+    </div>
+
+    <a href="gallery.html" data-protected="true">Gallery</a>
+    <a href="contact.html" data-protected="true">Contact</a>
+
+    <div class="user-profile" id="userProfile" style="display: none; position: relative;">
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="user-icon" alt="User Icon" />
+      <div class="user-popup" id="userPopup">
+        <p id="userEmailText"></p>
+        <button onclick="logoutUser()">Logout</button>
+      </div>
+    </div>
+
+    <a href="login.html" id="loginBtn" class="login-btn">Login</a>
+  </div>
+</div>
+
+<!-- Login Required Popup -->
+<div id="loginRequiredPopup">
+  <p><strong>Please login to continue.</strong></p>
+  <br>
+  <a href="login.html">Login Now</a>
+</div>
+
+<section style="padding: 20px;">
+  <div style="max-width: 900px; margin: auto; display: flex; flex-direction: column; gap: 20px;">
+    <!-- MODULES remain unchanged -->
+  </div>
+</section>
+
+<script>
+  function toggleOptions() {
+    var options = document.getElementById("membershipOptions");
+    options.style.display = (options.style.display === "block") ? "none" : "block";
+  }
+
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+  }
+
+  function toggleNoticePopup(event) {
+    event.preventDefault();
+    const popup = document.getElementById('noticePopup');
+    popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function logoutUser() {
+    fetch('/logout', {
+      method: 'POST',
+      credentials: 'same-origin'
+    }).then(() => {
+      window.location.href = 'login.html';
+    });
+  }
+
+  let userEmail = null;
+
+  window.addEventListener('DOMContentLoaded', () => {
+    fetch('/get-user-email')
+      .then(res => res.json())
+      .then(data => {
+        userEmail = data.email || null;
+        if (userEmail) {
+          document.getElementById('loginBtn').style.display = 'none';
+          document.getElementById('userProfile').style.display = 'block';
+          document.getElementById('userEmailText').textContent = userEmail;
+        }
+        checkUserStatus();
+
+        // Protect links
+        document.querySelectorAll('[data-protected="true"]').forEach(el => {
+          el.addEventListener('click', function (e) {
+            if (!userEmail) {
+              e.preventDefault();
+              showLoginRequiredPopup();
+            }
+          });
+        });
+      });
+
+    document.addEventListener('click', function (e) {
+      if (!document.getElementById('userProfile').contains(e.target)) {
+        document.getElementById('userPopup').style.display = 'none';
+      }
+    });
+
+    document.querySelector('.user-icon')?.addEventListener('click', function () {
+      const popup = document.getElementById('userPopup');
+      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+
+  function checkUserStatus() {
+    fetch('/get-notice')
+      .then(res => res.json())
+      .then(data => {
+        const noticeText = document.getElementById('noticeText');
+        const noticeInput = document.getElementById('noticeInput');
+        const saveBtn = document.getElementById('saveNoticeBtn');
+        noticeText.textContent = data.notice || "No notice yet.";
+        if (userEmail === 'aman0567shukla@gmail.com') {
+          noticeInput.style.display = 'block';
+          noticeInput.value = data.notice || "";
+          saveBtn.style.display = 'block';
+        }
+      });
+  }
+
+  function saveNotice() {
+    const noticeValue = document.getElementById('noticeInput').value;
+    fetch('/set-notice', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ notice: noticeValue })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert("Notice updated!");
+        document.getElementById('noticeText').textContent = noticeValue;
+      } else {
+        alert("Unauthorized or failed to update.");
+      }
+    });
+  }
+
+  function showLoginRequiredPopup() {
+    const popup = document.getElementById('loginRequiredPopup');
+    popup.style.display = 'block';
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 3000);
+  }
+</script>
+
+<script src="index.js"></script>
+<section style="padding: 20px;">
+  <div style="max-width: 900px; margin: auto; display: flex; flex-direction: column; gap: 20px;">
+
+    <!-- MODULE 1 -->
+    <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <h3 style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">MODULE-1 [थल/Land]</h3>
+      <ul style="list-style: disc; padding-left: 20px;">
+        <li>Alpha-Wing (Asia)</li>
+        <li>Beta-Wing (America)</li>
+        <li>Gamma-Wing (Africa)</li>
+        <li>Delta-Wing (Europe)</li>
+        <li>Theta-Wing (Oceania)</li>
+      </ul>
+    </div>
+
+    <!-- MODULE 2 -->
+    <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <h3 style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">MODULE-2 [नभ/Space]</h3>
+      <ul style="list-style: disc; padding-left: 20px;">
+        <li>Kilo-Verse (Whirlpool Galaxy)</li>
+        <li>Mega-Verse (Fireworks Galaxy)</li>
+        <li>Giga-Verse (Sunflower Galaxy)</li>
+        <li>Tera-Verse (Milkyway Galaxy)</li>
+        <li>Peta-Verse (Andromeda Galaxy)</li>
+      </ul>
+    </div>
+
+    <!-- MODULE 3 -->
+    <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <h3 style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">MODULE-3 [जल/Water]</h3>
+      <ul style="list-style: disc; padding-left: 20px;">
+        <li>Mono-Trench (Arctic Ocean)</li>
+        <li>Di-Trench (Southern Ocean)</li>
+        <li>Tri-Trench (Indian Ocean)</li>
+        <li>Tetra-Trench (Atlantic Ocean)</li>
+        <li>Penta-Trench (Pacific Ocean)</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

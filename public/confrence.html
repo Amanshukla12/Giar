@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conference 2025</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      color: #333;
+    }
+
+    .header {
+      text-align: center;
+      background: #004080;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 320px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card .content {
+      padding: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #004080;
+    }
+
+    .footer {
+      text-align: center;
+      background: #004080;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>🌍 International Conference 2025</h1>
+    <p class="subtitle">Join the global leaders in innovation and science</p>
+  </header>
+
+  <section class="gallery">
+    <div class="card">
+      <img src="gallery1.jpg" alt="Conference 1" />
+      <div class="content">
+        <h3>Opening Ceremony</h3>
+        <p>Grand opening with global leaders and dignitaries.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="gallery2.jpg" alt="Conference 2" />
+      <div class="content">
+        <h3>Keynote Speakers</h3>
+        <p>Hear from influential voices in tech and innovation.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="gallery3.jpg" alt="Conference 3" />
+      <div class="content">
+        <h3>Workshops</h3>
+        <p>Hands-on sessions and collaborative learning.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="gallery4.jpg" alt="Conference 4" />
+      <div class="content">
+        <h3>Panel Discussions</h3>
+        <p>Industry-focused debates with experts.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="gallery5.jpg" alt="Conference 5" />
+      <div class="content">
+        <h3>Networking Event</h3>
+        <p>Build lasting connections with peers and mentors.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 International Conference. All rights reserved.</p>
+  </footer>
+</body>
+</html>

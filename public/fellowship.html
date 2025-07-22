@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fellowship Programs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f4f8;
+      margin: 0;
+      padding: 30px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .fellowship-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px 20px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border-top: 6px solid #3f51b5;
+    }
+
+    .card.master {
+      border-top-color: #4caf50;
+    }
+
+    .card.doctoral {
+      border-top-color: #ff9800;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      color: #333;
+    }
+
+    .amount {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
+
+    .salary {
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* Responsive Text */
+    @media (max-width: 600px) {
+      .card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="fellowship-container">
+    <div class="card master">
+      <h2>🎓 Master Program</h2>
+      <p class="amount">₹25K / Month</p>
+      <p class="salary">💼 3 LPA</p>
+    </div>
+    <div class="card doctoral">
+      <h2>🎓 Doctoral Program</h2>
+      <p class="amount">₹50K / Month</p>
+      <p class="salary">💼 6 LPA</p>
+    </div>
+  </div>
+</body>
+</html>

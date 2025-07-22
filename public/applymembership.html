@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply Now</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+  color: #333;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  background: #f0f8ff;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #005f99;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+  </style>
+  <div class="container">
+    <h1>Apply for Membership</h1>
+
+    <div class="card">
+      <h2 id="planTitle">Selected Plan</h2>
+      <p id="fees"></p>
+      <p id="benefit"></p>
+    </div>
+
+    <form>
+      <label for="name">Your Name:</label><br>
+      <input type="text" id="name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" required><br><br>
+
+      <label for="phone">Phone Number:</label><br>
+      <input type="tel" id="phone"><br><br>
+
+      <button type="submit" class="btn">Submit Application</button>
+    </form>
+  </div>
+</body>
+<script src="applymembership.js"></script>
+</html>
+
+

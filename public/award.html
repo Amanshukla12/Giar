@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GIAR Awards</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .header {
+      background: #0b3c5d;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.8rem;
+    }
+
+    .awards-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .award-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      border-top: 5px solid #0b3c5d;
+    }
+
+    .award-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .award-card h2 {
+      color: #0b3c5d;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .award-card p {
+      margin: 6px 0;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .footer {
+      background: #0b3c5d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>🏆 GIAR Awards</h1>
+    <p>Recognizing Excellence Across Academic & Research Domains</p>
+  </div>
+
+  <section class="awards-section">
+
+    <div class="award-card">
+      <h2>🎓 Ideologist-Award</h2>
+      <p><span class="highlight">Applicant:</span> University Students (Bachelor / Master)</p>
+      <p><span class="highlight">Criteria:</span> Innovative Idea</p>
+      <p><span class="highlight">Amount:</span> ₹10K (Award Money)</p>
+      <p><span class="highlight">Eligibility:</span> GIAR Professional Membership</p>
+      <p><span class="highlight">Fees:</span> ₹1K Annual | ₹10K Lifetime</p>
+    </div>
+
+    <div class="award-card">
+      <h2>🔬 Investigator-Award</h2>
+      <p><span class="highlight">Applicant:</span> Research Scholars (Doctoral / Post-Doctoral)</p>
+      <p><span class="highlight">Criteria:</span> Research Proposal</p>
+      <p><span class="highlight">Amount:</span> ₹50K (Award Money)</p>
+      <p><span class="highlight">Eligibility:</span> GIAR Professional Membership</p>
+      <p><span class="highlight">Fees:</span> ₹5K Annual | ₹50K Lifetime</p>
+    </div>
+
+    <div class="award-card">
+      <h2>🧠 Philosopher-Award</h2>
+      <p><span class="highlight">Applicant:</span> Working Professionals (Professors / Scientists)</p>
+      <p><span class="highlight">Criteria:</span> Research Profile</p>
+      <p><span class="highlight">Amount:</span> ₹100K (Award Money)</p>
+      <p><span class="highlight">Eligibility:</span> GIAR Professional Membership</p>
+      <p><span class="highlight">Fees:</span> ₹10K Annual | ₹100K Lifetime</p>
+    </div>
+
+  </section>
+
+  <div class="footer">
+    <p>© 2025 Global Institute for Advanced Research (GIAR) | All Rights Reserved</p>
+  </div>
+
+</body>
+</html>

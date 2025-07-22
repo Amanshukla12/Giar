@@ -1,0 +1,90 @@
+<!-- individual.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Individual Membership</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      background: #f0f8ff;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #005f99;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+
+  <div class="container">
+    <h1>Individual Membership Plans</h1>
+
+    <div class="card" onclick="location.href='apply.html?plan=University+Student&fees=Annual+INR+1000|+Lifetime+INR+10000|+Foreigner+USD+100&benefit=Access+to+Research+Internships,+Workshops,+and+Student+Conferences'">
+      <h2>University Student</h2>
+      <p><strong>Fees:</strong><br> Annual: INR 1,000<br> Lifetime: INR 10,000<br> Foreigner: USD 100</p>
+      <p><strong>Benefit:</strong> Access to Research Internships, Workshops, and Student Conferences</p>
+    </div>
+
+    <div class="card" onclick="location.href='apply.html?plan=Research+Scholar&fees=Annual+INR+5000|+Lifetime+INR+50000|+Foreigner+USD+500&benefit=Eligibility+for+Research+Grants+and+Assistantships'">
+      <h2>Research Scholar</h2>
+      <p><strong>Fees:</strong><br> Annual: INR 5,000<br> Lifetime: INR 50,000<br> Foreigner: USD 500</p>
+      <p><strong>Benefit:</strong> Eligibility for Research Grants and Assistantships</p>
+    </div>
+
+    <div class="card" onclick="location.href='apply.html?plan=Working+Professional&fees=Annual+INR+10000|+Lifetime+INR+100000|+Foreigner+USD+1000&benefit=Opportunities+as+Principal+Investigator+in+Funded+Projects'">
+      <h2>Working Professional</h2>
+      <p><strong>Fees:</strong><br> Annual: INR 10,000<br> Lifetime: INR 1,00,000<br> Foreigner: USD 1,000</p>
+      <p><strong>Benefit:</strong> Opportunities as Principal Investigator in Funded Projects</p>
+    </div>
+  </div>
+</body>
+</html>
